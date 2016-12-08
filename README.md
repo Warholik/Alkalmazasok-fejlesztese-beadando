@@ -1,35 +1,86 @@
-# AdonisJs Application
+#Dokumentáció
 
-This repo is the pre-configured project structure to be used for creating ambitious web servers using AdonisJs.
+##Kollégiumi jelentkező felület külföldi hallgatók számára
 
-> Make sure to star the official [framework repo](https://github.com/adonisjs/adonis-framework) or [tweet on twitter](https://twitter.com/intent/tweet?url=http://adonisjs.com&text=I%20am%20using%20AdonisJs,%20a%20practical%20MVC%20framework%20for%20nodejs&hashtags=nodejs,adonisframework) :wave:
+__1. Követelményanalízis__
 
-## Story
+1.1. Célkitűzés, projektindító dokumentum
 
-One day a :boy: wanted to write a web application to slowly turn it into a business and make some :moneybag: for better living. Being a Javascript lover, he decided to go with Node.js. 
+A külföldi hallgatók kollégiumi jelentkezését megkkönyítő felület elkészítése.
+Az adatok védelme érdekében legyen lehetőség regisztrációra, majd bejelentkezésre. Bejelentkezett felhasználó a kollégiumokat megtekintheti, valamint azokba jelentkezhet.
 
-Hosting Node.js applications are cheap and offers lots of mordern programming concepts to build realtime data rich applications.
+__Funkcionális követelmények:__
 
-He was so excited and full of energy to build this application and share it with the world. But soon his dreams started struggling with the amount of decisions he has to make, just to build an MVP of his idea. These decisions were not even related to the business and was about.
-
-1. How should I structure my application?
-2. Why do I need to download 20 modules just to start an HTTP server, parse request body and upload files.
-3. How should I manage the authentication on website, and expose public API for others to interact with the data?
-4. What do I need to do to secure my application from web attacks and how to handle CORS?
-5. Why do I have ton of `require` statements everywhere?
-6. How the heck should I test my code? I am having hard time mocking dependencies.
-7. **WHY THE :fish:** there are no standards to write some code. Hell I am not going to write this application and going for a walk.
+- Regisztráció
+- Bejelentkezés
+- Csak bejelentkezett felhasználók által elérhető funkciók
+ * Kollégiumok böngészése
+ * Kollégium részletes adatainak megnézése
+ * Kollégiumi jelentkezés
+ * Meglévő jelentkezés törlése
 
 
-## Not Anymore
+__Nem funkcionális követelmények:__
 
-This is so frustating. Node.js is a beautiful language but all of the above questions have never been answered together. We all love writing small concise modules but business are not created by downloading 20 modules.
+- Könnyű áttekinthetőség: Kollégiumok blokkonkénti elkülönítése
+- Használhatóság: Könnyű áttekinthetőség, ésszerű elrendezés, könnyű kezelhetőség
+- Megbízhatóság: jelszóval védett funkciók, és a jelszavak védelme a háttérben. Hibásan bevitt adatok esetén a program jól láthatóan emelje ki a hibás beviteli mezőket, ilyen esetben a jól bevitt adatok maradjanak az űrlapban.
+- Karbantarthatóság: könnyen lehessen bővíteni, a különböző típusú fájlok külön csoportosítva, ésszerűen legyenek felbontva, a könnyebb fejleszthetőség miatt
 
-Developers needs productive tools, so that they can focus on what matters, and not on downloading & finding the best ways to combine these small modules. 
+__1.3 Használatieset-modell, funkcionális követelmények__
 
-## AdonisJs
+_Vendég:_ Csak a publikus oldalakat éri el
+- Főoldal
+- Bejelentkezés
+- Regisztráció
 
-AdonisJs is a beautiful framework with pre-configured answers to all of your questions. We not only created this framework, but validated the features of framework with realtime problems and still improving every bit, so that you have to write less and structured code.
+__Bejelentkezett felhasználó:__ A publikus oldalak elérésén felül egyéb funkciókhoz is hozzáfér.
+- Kollégiumok közötti választás
+- Kollégium adatainak megtekintése
+- Kollégiumi jelentkezés
+- Meglévő jelentkezés módosítása
 
-This time a :boy: will write his ambitious application and will set the world on :fire:``. Don't hesitate to work on your ideas and we promise to improve the framework every :sunny: and :first_quarter_moon_with_face: and YESSSS do not forget to star us on [:octocat:](https://github.com/adonisjs/adonis-framework)
+Vegyünk példának egy egyszerű folyamatot:
 
+__Meglévő jelentkezés lemondása:__
+1. A felhasználó az oldalra érkezve, bejelentkezik vagy regisztrál
+2. Regisztráció után megtekintheti a kollégiumokat listázó oldalt, ahol kiválaszthatja azt a kollégiumot ahová jelentkezni kíván.
+3. Megnyomja a "Applications" gombot.
+4. A "Applications" oldalon kiválasztja a jelentkezést és rákattint a "Delete application" gombra.
+5. "Submit" gombra kattintva elmenti a változásokat
+
+__2. Tervezés__
+
+2.1. Architektúra terv
+
+2.1.1. Komponensdiagram
+
+
+2.1.2. Oldaltérkép:
+
+__Publikus:__
+* Főoldal
+* Bejelentkezés
+* Regisztráció
+
+__Bejelentkezett:__
+* Főoldal
+* Kollégiumok listaoldala
+* Kollégium információs oldala
+* Jelenektkezések listaoldala
+
+2.1.3 Végpontok:
+
+2.1.3 Oldalvázlatok:
+
+Az oldalvázlatok a következő oldalon tekinthetőek meg:
+http://lumzy.com/access/?id=0C85086DFE9724ECD416DD4A5C1F8B86
+
+
+
+2.1.4 adatmodellkapcsolat:
+[Dormitory] +-> 0..* [User]
+
+[User]  +-> 0..* [Dormitory]
+
+[User] -> 0..* [Applyment]

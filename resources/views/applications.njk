@@ -1,0 +1,17 @@
+{% extends "layout" %}
+{% block content %}
+
+
+{% block scripts %}
+const Database = use('Database')
+const categories = yield Database.from('users').select('*');
+console.log(categories.motivation)
+{% endblock %}
+{% for users in _create_users_table %}
+
+console.log({{ users.username }})
+
+  {% endfor %}
+
+
+{% endblock %}

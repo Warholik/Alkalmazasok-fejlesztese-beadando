@@ -9,12 +9,12 @@ class UsersTableSchema extends Schema {
       table.increments()
       table.string('username', 80).notNullable().unique()
       table.string('email', 254).notNullable().unique()
+      table.string('password', 60).notNullable()
       table.string('phnonenumber', 254).notNullable().unique()
       table.date('birthdate')
       table.string('university', 254).notNullable()
       table.string('country', 254).notNullable()
       table.string('motivation', 254).notNullable()
-      table.string('password', 60).notNullable()
       table.timestamps()
     })
   }

@@ -81,7 +81,7 @@ console.log("varos"+registerData.country)
     user.username = registerData.name;
     user.email = registerData.email;
     user.password = yield Hash.make(registerData.password) 
-    user.phonenumber = registerData.phnonenumber;
+    user.phonenumber = registerData.phonenumber;
     user.birthdate = registerData.birthdate;
     user.university = registerData.university;
     user.motivation = registerData.motivation;

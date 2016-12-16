@@ -17,7 +17,7 @@
 
 const Route = use('Route')
 
-Route.on('/').render('main')
+Route.get('/', 'DormitoryController.list')
 //Route.on('/registration').render('registration');
 
 Route.get('/registration', 'UserController.registration')
@@ -25,5 +25,14 @@ Route.post('/registration', 'UserController.doRegister')
 Route.get('/login', 'UserController.login')
 Route.post('/login', 'UserController.doLogin')
 Route.get('/logout', 'UserController.doLogout')
+
+Route.post('/dormitory/:id/apply', 'ApplicationController.apply').middleware('auth')
+Route.post('/dormitory/:id/cancel', 'ApplicationController.cancel').middleware('auth')
+
+Route.group('ajax', function () {
+    Route.post('/dormitory/:id/apply', 'ApplicationController.ajaxApply').middleware('auth')
+    Route.post('/dormitory/:id/cancel', 'ApplicationController.ajaxCancel').middleware('auth')
+}).prefix('/ajax')
+
 
 Route.on('/applications').render('applications')

@@ -650,6 +650,22 @@
                 "editview": {
                     "show": true
                 }
+            },
+            {
+                "name": "phonenumber",
+                "verbose": "phonenumber",
+                "control": {
+                    "text": true
+                },
+                "type": "varchar(254)",
+                "allowNull": false,
+                "defaultValue": null,
+                "listview": {
+                    "show": true
+                },
+                "editview": {
+                    "show": true
+                }
             }
         ],
         "mainview": {

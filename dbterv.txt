@@ -1,0 +1,28 @@
+users (id)
+------------------
+id : int
+username : string
+email : string
+password : string
+...
+
+dormitories (id)
+------------------
+id : int
+name : string
+leader_id : int -> leaders.id
+created_at : timestamp
+updated_at : timestamp
+
+leaders (id)
+------------------
+id : int
+name : string
+created_at : timestamp
+updated_at : timestamp
+
+dormitory_user (user_id, dormitory_id)
+------------------
+user_id : int -> users.id
+dormitory_id : int -> dormitories.id
+

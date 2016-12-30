@@ -1,14 +1,22 @@
 {% extends "layout" %} {% block content %}
 
+<h1>A jelenlegi vezetők</h1>
+
+
+<table style="width:100%">
+{% for leader in leaders %} 
+  <tr>
+    <th>{{ leader.name }}</th>
+    <th><button type="submit" class="btn btn-danger">Törlés</button></th> 
+        <form action="/leader/{{ leader.id }}/delete" method="POST" id="deleteDormform">
+        {{ csrfField }}
+    </form>
+  </tr>
+   {% endfor %}
+</table>
+
 <h1>Vezető létrehozása</h1>
 
-<ul class="list-group">
-    {% for leader in leaders %}
-    <li class="list-group-item">{{ leader.name }}</li>
-
-    <li><input type="radio" name="vezeto" value={{ leadername.id }}> {{ leader.name }} </li>
-    {% endfor %}
-</ul>
 
 <form class="form-horizontal" action="/leader" method="POST">
     {{ csrfField }}

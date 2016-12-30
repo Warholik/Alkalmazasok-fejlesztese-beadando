@@ -2,6 +2,7 @@
 
 
 const Leader = use('App/Model/Leader')
+const Dormitory = use('App/Model/Dormitory')
 
 class LeaderController {
     * registration(request, response) {
@@ -30,6 +31,32 @@ class LeaderController {
         yield leader.save()
 
         response.redirect('/')
+    }
+
+    
+        * doDelete (req, res) {
+        const leader = yield Leader.find(req.param('id'))
+        const dormitories = yield Dormitory.all()
+        for ( const dorm of dormitories){
+            if(dorm.leader_id === leader.id){
+                dorm.leader_id = null
+                yield dorm.save()
+            }
+        }
+
+        yield leader.delete()
+
+        res.redirect('/leader')
+    }
+
+    * ajaxDelete (req, res) {
+        const leader = yield Leader.find(req.param('id'))
+
+        yield leader.delete()
+
+        res.ok({
+            success: true
+        })
     }
 }
 

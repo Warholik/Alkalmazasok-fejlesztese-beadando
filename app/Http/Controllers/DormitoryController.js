@@ -17,16 +17,15 @@ class DormitoryController {
                 dorms: dorms.toJSON()
             })
         } else {
-            console.log("az user NEM null")
-
             // a jelenlegi felhasználó melyik kollégiumokba jelentkezett
             const applications = yield req.currentUser.applications().fetch() // <- Array<Dormitory>
+           
             const applicationIds = applications.toJSON().map(application => application.id) // <- Array<Number>
-
             yield res.sendView('main', {
                 dorms: dorms.toJSON(),
                 applicationIds
             })
+            
         }
 
 
@@ -60,6 +59,56 @@ class DormitoryController {
 
         response.redirect('/')
     }
+
+        * doDelete (req, res) {
+        const dormitory = yield Dormitory.find(req.param('id'))
+
+        yield dormitory.delete()
+
+        res.redirect('/')
+    }
+
+    * ajaxDelete (req, res) {
+        const dormitory = yield Dormitory.find(req.param('id'))
+
+        yield dormitory.delete()
+
+        res.ok({
+            success: true
+        })
+    }
+
+    * edit (req, res) {
+        const dormitory = yield Dormitory.find(req.param('id'))
+        const leader = yield Leader.all()
+
+        yield res.sendView('dormedit', {
+            dormitory: dormitory.toJSON(),
+            leader: leader.toJSON()
+        })
+    }
+
+    * doEdit (req, res) {
+        const dormitory = yield Dormitory.find(req.param('id'))
+
+        if (dormitory === null) {
+            res.notFound('Bocsika, nincs ilyen koli!')
+            return
+        }
+
+        // 1. input
+        const registerData = req.all()
+
+
+        //dormitory.leiras = registerData.leiras;
+        dormitory.leader_id = registerData.vezeto;
+
+        yield dormitory.save()
+
+        res.redirect('/')
+    }
+
+
 
 
 }

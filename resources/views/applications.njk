@@ -5,7 +5,10 @@
 
 <ul class="list-group">
     {% for user in users %}
-    <li class="list-group-item">{{ user.username }}</li>
+    <li class="list-group-item"> {{ user.username }}</li>
+        {% for application in user.applications %}
+            <li class="list-group-item">SAJT</li>
+        {% endfor %}
     {% endfor %}
 </ul>
 

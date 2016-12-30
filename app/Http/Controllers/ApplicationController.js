@@ -16,24 +16,28 @@ class ApplicationController {
     * list(req, res) {
 
         // a jelenlegi felhasználó melyik kollégiumokba jelentkezett
-       // const applications = yield req.currentUser.applications().fetch() // <- Array<Dormitory>
-       // const applicationIds = applications.toJSON().map(application => application.id) // <- Array<Number>
+        // const applications = yield req.currentUser.applications().fetch() // <- Array<Dormitory>
+        // const applicationIds = applications.toJSON().map(application => application.id) // <- Array<Number>
 
-       // yield res.sendView('applications', {
-       //     dorms: dorms.toJSON(),
-       //     applicationIds
-       // })
+        // yield res.sendView('applications', {
+        //     dorms: dorms.toJSON(),
+        //     applicationIds
+        // })
 
         const users = yield User.all()
 
         for (const user of users) {
-           const applications =  yield user.applications().fetch()
-           const applicationIds = applications.toJSON().map(application => application.id)
-            console.log(applicationIds)
+            yield user.related('applications').load()
+            const applications = yield user.applications().fetch()
+            const applicationIds = applications.toJSON().map(application => application.id)
+            console.log("Az user ide jelentkezett: "+user.applications.dormitory_id)
         }
-        //console.log("Az adattagok: "+object.keys(users))
-        yield res.sendView('applications.njk', { 
-            users: users.toJSON() })
+
+
+
+        yield res.sendView('applications.njk', {
+            users: users.toJSON()
+        })
     }
 
     * cancel(req, res) {

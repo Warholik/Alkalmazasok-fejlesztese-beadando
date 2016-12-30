@@ -1,17 +1,13 @@
 {% extends "layout" %}
 {% block content %}
 
+<h1>A jelenlegi Jelentkezesek</h1>
 
-{% block scripts %}
-const Database = use('Database')
-const categories = yield Database.from('users').select('*');
-console.log(categories.motivation)
-{% endblock %}
-{% for users in _create_users_table %}
-
-console.log({{ users.username }})
-
-  {% endfor %}
+<ul class="list-group">
+    {% for user in users %}
+    <li class="list-group-item">{{ user.username }}</li>
+    {% endfor %}
+</ul>
 
 
 {% endblock %}

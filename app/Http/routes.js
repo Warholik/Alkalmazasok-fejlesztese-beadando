@@ -26,6 +26,13 @@ Route.get('/login', 'UserController.login')
 Route.post('/login', 'UserController.doLogin')
 Route.get('/logout', 'UserController.doLogout')
 
+Route.get('/dormitory', 'DormitoryController.registration')
+Route.post('/dormitory', 'DormitoryController.doRegister')
+
+
+Route.get('/leader', 'LeaderController.registration')
+Route.post('/leader', 'LeaderController.doRegister')
+
 Route.post('/dormitory/:id/apply', 'ApplicationController.apply').middleware('auth')
 Route.post('/dormitory/:id/cancel', 'ApplicationController.cancel').middleware('auth')
 
@@ -35,4 +42,4 @@ Route.group('ajax', function () {
 }).prefix('/ajax')
 
 
-Route.on('/applications').render('applications')
+Route.get('/applications', 'ApplicationController.list')

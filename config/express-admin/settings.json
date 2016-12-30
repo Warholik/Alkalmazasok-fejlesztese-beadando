@@ -524,22 +524,6 @@
                 }
             },
             {
-                "name": "phnonenumber",
-                "verbose": "phnonenumber",
-                "control": {
-                    "text": true
-                },
-                "type": "varchar(254)",
-                "allowNull": false,
-                "defaultValue": null,
-                "listview": {
-                    "show": true
-                },
-                "editview": {
-                    "show": true
-                }
-            },
-            {
                 "name": "birthdate",
                 "verbose": "birthdate",
                 "control": {
@@ -547,54 +531,6 @@
                 },
                 "type": "date",
                 "allowNull": true,
-                "defaultValue": null,
-                "listview": {
-                    "show": true
-                },
-                "editview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "university",
-                "verbose": "university",
-                "control": {
-                    "text": true
-                },
-                "type": "varchar(254)",
-                "allowNull": false,
-                "defaultValue": null,
-                "listview": {
-                    "show": true
-                },
-                "editview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "country",
-                "verbose": "country",
-                "control": {
-                    "text": true
-                },
-                "type": "varchar(254)",
-                "allowNull": false,
-                "defaultValue": null,
-                "listview": {
-                    "show": true
-                },
-                "editview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "motivation",
-                "verbose": "motivation",
-                "control": {
-                    "text": true
-                },
-                "type": "varchar(254)",
-                "allowNull": false,
                 "defaultValue": null,
                 "listview": {
                     "show": true
@@ -643,22 +579,6 @@
                 },
                 "type": "datetime",
                 "allowNull": true,
-                "defaultValue": null,
-                "listview": {
-                    "show": true
-                },
-                "editview": {
-                    "show": true
-                }
-            },
-            {
-                "name": "phonenumber",
-                "verbose": "phonenumber",
-                "control": {
-                    "text": true
-                },
-                "type": "varchar(254)",
-                "allowNull": false,
                 "defaultValue": null,
                 "listview": {
                     "show": true

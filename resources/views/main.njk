@@ -6,33 +6,58 @@
 
 {% block content %}
 
-<h1>{{ name }}</h1>
+{% if currentUser %}
+              
+  <h1>{{ name }}</h1>
 
-<div class="row">
-  {% for dorm in dorms %}
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <h3>{{ dorm.name }}</h3>
-        <p>{{ dorm.leader.name }}</p>
-        <p>
-          {% if applicationIds.indexOf(dorm.id) >= 0 %}
-          <form action="/dormitory/{{ dorm.id }}/cancel" method="POST" class="application-form">
-            {{ csrfField }}
-            <button type="submit" class="btn btn-warning">Jelentkezés visszavonása</button>
-          </form>
-          {% else %}
-          <form action="/dormitory/{{ dorm.id }}/apply" method="POST" class="application-form">
-            {{ csrfField }}
-            <button type="submit" class="btn btn-success">Jelentkezés</button>
-          </form>
-          {% endif %}
-        </p>
+  <div class="row">
+    {% for dorm in dorms %}
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{ dorm.name }}</h3>
+          <p>{{ dorm.leader.name }}</p>
+          <p>
+            {% if applicationIds.indexOf(dorm.id) >= 0 %}
+            <form action="/dormitory/{{ dorm.id }}/cancel" method="POST" class="application-form">
+              {{ csrfField }}
+              <button type="submit" class="btn btn-warning">Jelentkezés visszavonása</button>
+            </form>
+            {% else %}
+            <form action="/dormitory/{{ dorm.id }}/apply" method="POST" class="application-form">
+              {{ csrfField }}
+              <button type="submit" class="btn btn-success">Jelentkezés</button>
+            </form>
+            {% endif %}
+          </p>
+        </div>
       </div>
     </div>
+    {% endfor %}
   </div>
-  {% endfor %}
-</div>
+
+{% else %}
+
+           <h1>SÜN</h1>
+
+  <div class="row">
+    {% for dorm in dorms %}
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3>{{ dorm.name }}</h3>
+          <p>{{ dorm.leader.name }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+{% endif %}
+
+
 
 
 {% endblock %}

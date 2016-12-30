@@ -72,20 +72,20 @@ class UserController {
 console.log("username"+registerData.name)
 console.log("email"+registerData.email)
 console.log("jelszo"+registerData.password)
-console.log("telefonszam"+registerData.phnonenumber)
+//console.log("telefonszam"+registerData.phonenumber)
 console.log("szuldatum"+ registerData.birthdate)
-console.log("egyetem"+registerData.university)
-console.log("motivacio"+registerData.motivation)
-console.log("varos"+registerData.country)
+//console.log("egyetem"+registerData.university)
+//console.log("motivacio"+registerData.motivation)
+//console.log("varos"+registerData.country)
 
     user.username = registerData.name;
     user.email = registerData.email;
     user.password = yield Hash.make(registerData.password) 
-    user.phonenumber = registerData.phonenumber;
+  //  user.phonenumber = registerData.phonenumber;
     user.birthdate = registerData.birthdate;
-    user.university = registerData.university;
-    user.motivation = registerData.motivation;
-    user.country = registerData.country;
+  //  user.university = registerData.university;
+  //  user.motivation = registerData.motivation;
+  //  user.country = registerData.country;
 
 
     yield user.save()

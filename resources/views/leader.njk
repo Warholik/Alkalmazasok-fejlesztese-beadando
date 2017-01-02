@@ -7,9 +7,10 @@
 {% for leader in leaders %} 
   <tr>
     <th>{{ leader.name }}</th>
-    <th><button type="submit" class="btn btn-danger">Törlés</button></th> 
-        <form action="/leader/{{ leader.id }}/delete" method="POST" id="deleteDormform">
+    
+    <form action="/leader/{{ leader.id }}/delete" method="POST" id="deleteDormform">
         {{ csrfField }}
+        <th><button type="submit" class="btn btn-danger">Törlés</button></th> 
     </form>
   </tr>
    {% endfor %}

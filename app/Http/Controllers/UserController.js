@@ -21,81 +21,70 @@ class UserController {
     yield response.sendView('login')
   }
 
-  * doLogin (request, response) {
+  * doLogin(request, response) {
     const email = request.input('email')
     const password = request.input('password')
     try {
-      const login = yield request.auth.attempt(email, password) 
+      const login = yield request.auth.attempt(email, password)
       if (login) {
         response.redirect('/')
         return
       }
-    } 
+    }
     catch (err) {
       yield request
         .withAll()
-        .andWith({errors: [
-          {
-            message: 'Invalid credentails'
-          }
-        ]})
+        .andWith({
+          errors: [
+            {
+              message: 'Invalid credentails'
+            }
+          ]
+        })
         .flash()
       response.redirect('/login')
     }
   }
 
-  * doRegister (request, response) {
+  * doRegister(request, response) {
     const registerData = request.except('_csrf');
-    
+
     const rules = {
-      username: 'required|alpha_numeric|unique:users',
+      name: 'required|unique:users|min:4',
       email: 'required|email|unique:users',
+      birthdate: 'required',
       password: 'required|min:4',
       password_confirm: 'required|same:password',
     };
-/*
-   // const validation = yield Validator.validateAll(registerData, rules)
 
-
+    const validation = yield Validator.validateAll(registerData, rules)
     if (validation.fails()) {
       yield request
         .withAll()
-        .andWith({errors: validation.messages()})
+        .andWith({ errors: validation.messages() })
         .flash()
-      response.redirect('back')
+
+      response.redirect('/registration')
       return
     }
-    */
-
     const user = new User()
 
-console.log("username"+registerData.name)
-console.log("email"+registerData.email)
-console.log("jelszo"+registerData.password)
-//console.log("telefonszam"+registerData.phonenumber)
-console.log("szuldatum"+ registerData.birthdate)
-//console.log("egyetem"+registerData.university)
-//console.log("motivacio"+registerData.motivation)
-//console.log("varos"+registerData.country)
+
 
     user.username = registerData.name;
     user.email = registerData.email;
-    user.password = yield Hash.make(registerData.password) 
-  //  user.phonenumber = registerData.phonenumber;
+    user.password = yield Hash.make(registerData.password)
     user.birthdate = registerData.birthdate;
-  //  user.university = registerData.university;
-  //  user.motivation = registerData.motivation;
-  //  user.country = registerData.country;
 
 
     yield user.save()
-    
+
     yield request.auth.login(user)
 
     response.redirect('/')
   }
 
-  * doLogout (request, response) {
+  * doLogout(request, response) {
     yield request.auth.logout()
     response.redirect('/')
   }

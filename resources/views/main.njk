@@ -9,8 +9,8 @@
     <div class="thumbnail">
       <div class="caption">
         <h3>{{ dorm.name }}</h3>
-        <p>{{ dorm.leader.name }}</p>
-        <p>
+        <p>The dorm leader is: {{ dorm.leader.name }}</p>
+        <p>Description of the Dorm: {{ dorm.description }} </p>
           {% if applicationIds.indexOf(dorm.id) >= 0 %}
           <form action="/dormitory/{{ dorm.id }}/cancel" method="POST" class="application-form">
             {{ csrfField }}
@@ -37,7 +37,8 @@
 
 {% else %}
 
-<h1>SÜN</h1>
+
+<h1>You are a Visitor, log in!</h1>
 
 <div class="row">
   {% for dorm in dorms %}
@@ -45,7 +46,7 @@
     <div class="thumbnail">
       <div class="caption">
         <h3>{{ dorm.name }}</h3>
-        <p>{{ dorm.leader.name }}</p>
+        <p>The dorm leader is:  {{ dorm.leader.name }}</p>
       </div>
     </div>
   </div>

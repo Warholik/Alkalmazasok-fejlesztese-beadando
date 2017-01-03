@@ -11,8 +11,9 @@ class DormitoryController {
             .query()
             .with('leader')
             .fetch()
+
+
         if (req.currentUser === null) {
-            console.log("az user null")
 
             yield res.sendView('main', {
                 dorms: dorms.toJSON()

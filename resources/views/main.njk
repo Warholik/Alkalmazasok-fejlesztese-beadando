@@ -14,12 +14,12 @@
           {% if applicationIds.indexOf(dorm.id) >= 0 %}
           <form action="/dormitory/{{ dorm.id }}/cancel" method="POST" class="application-form">
             {{ csrfField }}
-            <button type="submit" class="btn btn-warning">Jelentkezés visszavonása</button>
+            <button type="submit" class="btn btn-warning">Cancel Applications</button>
           </form>
           {% else %}
           <form action="/dormitory/{{ dorm.id }}/apply" method="POST" class="application-form">
             {{ csrfField }}
-            <button type="submit" class="btn btn-success">Jelentkezés</button>
+            <button type="submit" class="btn btn-success">Applications</button>
           </form>
           {% endif %} {% if currentUser.username == "admin" %}
           <form action="/dormitory/{{ dorm.id }}/delete" method="POST" id="deleteRecipeForm">

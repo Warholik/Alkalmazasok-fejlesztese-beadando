@@ -67,10 +67,9 @@ __Kollégiumba való jelentkezés majd annak lemondása:__
 
 __2. Tervezés__
 
-2.1. Architektúra terv
+2.1.1 adatmodellkapcsolat:
 
-2.1.1. Komponensdiagram
-
+![Adatbazis_terv](/images/adatbazisterv.JPG)
 
 2.1.2. Oldaltérkép:
 
@@ -112,10 +111,28 @@ __Adminisztrátori nézet:__
 
 __2.1.3 Felületi tervek:__
 
+Főoldal vendég nézet:
+![vendég_nézet](/images/vendég_nézet.JPG)
 
-2.1.4 adatmodellkapcsolat:
-[Dormitory] +-> 0..* [User]
+Regisztráció:
+![regisztráció](/images/regisztráció.JPG)
 
-[User]  +-> 0..* [Dormitory]
+Bejelentkezés:
+![Login](/images/bejelentkezés.JPG)
 
-[User] -> 0..* [Applyment]
+Főoldal nézet normál felhasználóval:
+![normal_user_nezet](/images/normal user.JPG)
+
+Főoldla nézet admin felhasználóval:
+![Admin_user_nezet](/images/admin_nézet.JPG)
+
+Kollégium létrehozása:
+![Kollegium letrehozása](/images/Kollégium létrehozása.JPG)
+
+Kollégium módosítása:
+![Kollegium_modositasa](/images/kollégium_modositasa.JPG)
+
+Vezető törlése vagy hozzáadása:
+![Vezeto_torlese_hozzadasa](/images/vezető_torlese.JPG)
+
+

@@ -1,4 +1,4 @@
-var $loginButton = $('#btnLogin')
+var $loginButton = $('#btnRegister')
 $loginButton.on('click', function (ev) {
     ev.preventDefault()
 
@@ -16,17 +16,17 @@ $loginButton.on('click', function (ev) {
       </div>`)
 
     var $errorBox = $loginModal.find('.alert')
-    $errorBox.text('Rossz belépési adatok.').hide()
+    $errorBox.text('Rossz felhasználói adatok.').hide()
     
     var $formArea = $loginModal.find('.form-area')
-    $formArea.load('/login #loginForm', function () {
+    $formArea.load('/registration #registerform', function () {
         var $loginForm = $formArea.find('form')
         $loginForm.on('submit', function (ev) {
             ev.preventDefault();
             $errorBox.hide();
 
             $.ajax({
-                url: '/ajax/login',
+                url: '/ajax/registration',
                 method: 'POST',
                 data: $(this).serializeArray(),
                 dataType: 'json'

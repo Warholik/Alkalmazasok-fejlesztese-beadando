@@ -2,7 +2,8 @@
 
 {% block scripts %}
 <script src="/scripts/apply_cancel.js"></script> 
-
+<script src="/scripts/popup_login.js"></script> 
+<script src="/scripts/secure_delete.js"></script> 
 
 {% endblock %} 
 {% block content %}
@@ -21,18 +22,18 @@
           {% if applicationIds.indexOf(dorm.id) >= 0 %}
           <form action="/dormitory/{{ dorm.id }}/cancel" method="POST" class="application-form">
             {{ csrfField }}
-            <button type="submit" class="btn btn-warning">Cancel Applications</button>
+            <button type="submit" class="btn btn-warning">Cancel Application</button>
           </form>
           {% else %}
           <form action="/dormitory/{{ dorm.id }}/apply" method="POST" class="application-form">
             {{ csrfField }}
-            <button type="submit" class="btn btn-success">Applications</button>
+            <button type="submit" class="btn btn-success">Application</button>
           </form>
           {% endif %} {% if currentUser.username == "admin" %}
           <form action="/dormitory/{{ dorm.id }}/delete" method="POST" id="deleteRecipeForm">
             {{ csrfField }}
             <a class="btn btn-primary" href="/dormedit/{{ dorm.id }}/edit" role="button">Módosítás</a>
-            <button type="submit" class="btn btn-danger">Törlés</button>
+            <button type="submit" class="btn btn-danger" id="dormdeletebtn">Törlés</button>
           </form>
           {% endif %}
         </p>

@@ -104,6 +104,36 @@ class UserController {
     }
   }
 
+  * ajaxRegister(request, response) {
+    const registerData = request.except('_csrf');
+
+    const rules = {
+      name: 'required|unique:users|min:4',
+      email: 'required|email|unique:users',
+      birthdate: 'required',
+      password: 'required|min:4',
+      password_confirm: 'required|same:password',
+    };
+    const validation = yield Validator.validateAll(registerData, rules)
+    if (validation.fails()) {
+      yield request
+        .withAll()
+        .andWith({ errors: validation.messages() })
+        .flash()
+        response.redirect('back')
+      return
+    }
+    const user = new User()
+    user.username = registerData.name;
+    user.email = registerData.email;
+    user.password = yield Hash.make(registerData.password)
+    user.birthdate = registerData.birthdate;
+    yield user.save()
+    yield request.auth.login(user)
+    response.ok({ success: true })
+  }
+
+
 
 }
 

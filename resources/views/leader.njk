@@ -1,4 +1,11 @@
-{% extends "layout" %} {% block content %}
+{% extends "layout" %} 
+
+{% block scripts %}
+<script src="/scripts/secure_delete.js"></script> 
+
+{% endblock %} 
+
+{% block content %}
 
 <h1>A jelenlegi vezetők</h1>
 
@@ -10,7 +17,7 @@
     
     <form action="/leader/{{ leader.id }}/delete" method="POST" id="deleteDormform">
         {{ csrfField }}
-        <th><button type="submit" class="btn btn-danger">Törlés</button></th> 
+        <th><button type="submit" class="btn btn-danger" id="leadedelbut">Törlés</button></th> 
     </form>
   </tr>
    {% endfor %}

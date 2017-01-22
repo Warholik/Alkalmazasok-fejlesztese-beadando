@@ -36,11 +36,13 @@ Route.get('/leader', 'LeaderController.registration').middleware('auth')
 Route.post('/leader', 'LeaderController.doRegister').middleware('auth')
 Route.post('/leader/:id/delete', 'LeaderController.doDelete').middleware('auth')
 
+
 Route.post('/dormitory/:id/apply', 'ApplicationController.apply').middleware('auth')
 Route.post('/dormitory/:id/cancel', 'ApplicationController.cancel').middleware('auth')
 
 Route.group('ajax', function () {
     Route.post('/login', 'UserController.ajaxLogin')
+    Route.post('/registration', 'UserController.ajaxRegister')
     Route.post('/dormitory/:id/apply', 'ApplicationController.ajaxApply').middleware('auth')
     Route.post('/dormitory/:id/cancel', 'ApplicationController.ajaxCancel').middleware('auth')
     Route.delete('/dormitory/:id/delete', 'DormitoryController.ajaxDelete').middleware('auth')

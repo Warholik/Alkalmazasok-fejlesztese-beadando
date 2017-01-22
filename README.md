@@ -149,18 +149,6 @@ A fejlesztés alatt a következő mappákat használtam:
  * master.njk
  * registration.njk
  * welcome.njk
- 
-
-
- 
- 
-*Mappa létrehoza
-*npm install
-*AdonisJS telepítése
-*.env.example fájl átnevezése .env-re
-*npm run dev paranccsal futtatni
-*localhost:3333 megnyitása
-*tudunk commitolni és pusholni Guthub-ra
 
 __2.1.4 Felületi tervek:__
 
@@ -188,4 +176,70 @@ Kollégium módosítása:
 Vezető törlése vagy hozzáadása:
 ![Vezeto_torlese_hozzadasa](/images/vezető_torlese.JPG)
 
+__3. Felhasználói Dokumentáció:__
+Futtatáshoz szükséges operációs rendszer: Tetszőleges operációs rendszer.
+Futtatáshoz szükséges hardver: Bármely olyan hardver amely olyan operációs rendszert tud futtatni amely vizuális böngésző futtatására alkalmas. 
+Egyéb követelmények: Internet böngésző telepítése, JavaScript ajánlott.
 
+__3.1 A program telepítése és indítása:__
+* Mappa létrehoza
+* Githubról zipként letöltjük és kitömörítjük a mappába vagy klónozzuk a mappába a repository-t
+* "npm install" parancs kiadása 
+*.env.example fájl átnevezése .env-re
+* npm start paranccsal futtatni
+* localhost:3333 megnyitása
+
+__3.2. A program használata:__
+
+Átlag felhasználónak:
+* A böngészőben a főoldal megnyitása
+* Bejelentkezés vagy regisztráció
+* Kollégiuba jelentkezni az "Application" gomb megnyovásával lehetséges.
+* A kollégiumi jelentkezés visszavonását a "Cancel Application" gombbal tehetjük meg.
+
+Adminisztrátorként:
+* Az adminisztrátor felhasználóval való bejelentkezés után érhetjük el az adminisztrátori funkciókat
+* Kollégium felvétele menüpontnál az adatok feltöltése után tudok kollégiumot felvenni
+* Az Applications menüpontnál láthatjuk a jelentkezők listáját.
+* Egy kollégiumi vezető törlését a "Kollegiumi vezető felvétele és törlése" mepüpont alatt a vezető neve melletti gombra kattintva tehetjük meg.
+* Egy új vezetőt a "Kollegiumi vezető felvétele és törlése" alatt a "Kollégiumi vezető neve" mezőt kitöltve majd a mentés gombra kattinva tehetjük meg.
+
+__4. Kliens oldali JavaScript__
+
+__4.1 Új funkciók:__
+ 1. Belépés felugró ablakban. (popup_login.js)
+ 2. Regisztráció felugró ablakban.popup_login (popup_register.js)
+ 3. A törlés funkció csak a felugró ablak megerősítése után hajtódik végre (delete.js)
+ 4. A kollégiumba való jelentkezés. (apply_cancel.js)
+ 5. Korábbi jelentkezés törlése. (apply_cancel.js)
+
+__4.2. Új funkciók leírása__
+1. Belépés
+   - A popup_login -bekapcsolt javascript mellett- bejelentkezéskor csak a kitöltött form elküldése után tölti újra az oldal.
+   - A UserController-ben új funkcióként megjelenik az ajaxLogin, ennek működésükben a normál loginhoz hasonló.
+2. Regisztráció
+   - A popup_register segítségével -bekapcsolt javascript mellett- a regisztrációkor csak a kitöltött form elküldése után tölti újra az oldal. 
+   - A UserController-ben új funkcióként megjelenik az ajaxRegister ennek működésükben a normál regisztrációhoz hasonló.
+3. törlés
+   - A felugró ablakon a megerősítés gomb megnyomása után DELETE ajax/leader/:id/delete útvonalon a 
+     Leadercontroller ajaxDelete metódusa hívódik meg.
+4. Jelentkezés:
+   - Az "application" gomb megnyomása után a "POST ajax/dormitory/:id/apply" útvonalon az
+     ApplicationController ajaxApply metódusa hívódik meg.
+5. Jelentkezés törlése:
+   - A "Cancel application" gomb megnyomása után a "POST ajax/dormitory/:id/ajaxCancel" útvonalon az
+     ApplicationController ajaxCancel metódusa hívódik meg.
+
+   
+__4.3. Szekvenciadiagram:__
+Felhasználó regisztrál, bejelentkezik majd kollégimba jelentkezik.
+![Felhasználó kollégiumba jelentkezik](/images/Szekvenciadiagram.JPG)
+
+   
+__5. Tesztelés__
+A tesztelés a Selenium IDE nevezetű Firefox pluginnal végeztem. 
+* Telepítése: A firefox addon oldaláról telepíthető 
+* Használata: 
+  * Megnyitjuk a tesztelni kívánt oldalt 
+  * A böngésző menüsávjánál megjelenik a Selenium ikonja 
+  * A tesztelőben küldönböző folyamatokat lehet "felvenni" majd ezeket automatán "visszajátszani".

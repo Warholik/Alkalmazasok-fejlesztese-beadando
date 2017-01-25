@@ -1,44 +1,25 @@
 {% extends "layout" %}
 {% block content %}
 
-<h1>A jelenlegi Jelentkezesek</h1>
+<h1>A regisztrált userek:</h1>
 
 <ul class="list-group">
     {% for user in users %}
     <li class="list-group-item"> {{ user.username }}</li>
-        {% for application in user.applications %}
-            <li class="list-group-item">SAJT</li>
-        {% endfor %}
     {% endfor %}
 </ul>
 
-
+<h1>Akik kollégiumba jelentkeztek:</h1>
 
  {% for jelent in jelentkezok %}
  {% for jel in jelent %}
-<h1> {{ jel }} </h1>
   {% for user in users %}
      {% if user.id == jel %}
-        <h1> {{ user.username }} </h1>
+        <li class="list-group-item"> {{ user.username }}</li>
       {% endif %}
   {% endfor %}
   {% endfor %}
 {% endfor %}
-<h1> ---------------------------------------- </h1>
-
- {% for koli,jelentkezo in myMap %}
- <h1> a koli {{ koli }} és a jeletkezoje {{jelentkezo }} </h1>
-{% endfor %}
-
-<h1> ---------------------------------------- </h1>
-<ul class="list-group">
-    {% for dorm in dorms %}
-    <li class="list-group-item"> {{ dorm.name }}</li
-        {% for application in dorm.applications.id %}
-            <li class="list-group-item">SAJT</li>
-        {% endfor %}
-    {% endfor %}
-</ul>
 
 
 {% endblock %}

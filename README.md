@@ -243,3 +243,10 @@ A tesztelés a Selenium IDE nevezetű Firefox pluginnal végeztem.
   * Megnyitjuk a tesztelni kívánt oldalt 
   * A böngésző menüsávjánál megjelenik a Selenium ikonja 
   * A tesztelőben küldönböző folyamatokat lehet "felvenni" majd ezeket automatán "visszajátszani".
+
+A fájlok között megtalálható egy 'Selenium_test_suite' nevezetű file. Ez tartalmazza a teszteseteket amik a következők:
+* Adminisztrátori bejelentkezés -> Új kollégiumi vezető felvétele -> új kollégium fejvétele -> kilépés
+* Adminisztrátori bejelentkezés -> Kollégiumi vezető törlése -> Kollégium törlése -> kilépés
+* Bejelentkezés -> Kollégiumba jelentkezés -> Kilépés
+* Bejelentkezés -> kollégiumi jelentkezés visszavonása -> Kilépés
+* Regisztráció -> Kollégiumi jelentkezés -> Kilépés -> Belépés -> Kollégiumi jelentkezés visszavonása -> Kilépés

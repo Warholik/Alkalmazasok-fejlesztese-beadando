@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="../Users/wv_work_01/Desktop/test/kollegiumi vezeto és uj koli felvetele.html">kollegiumi vezeto és uj koli felvetele</a></td></tr>
+<tr><td><a href="../Users/wv_work_01/Desktop/test/Bejelentkezés kollégiumi vezető törlése kollégium törlése kilépés.html">Bejelentkezés kollégiumi vezető törlése kollégium törlése kilépés</a></td></tr>
+<tr><td><a href="../Users/wv_work_01/Desktop/test/Bejelentkezés majd kollégiumba jelentkezés.html">Bejelentkezés majd kollégiumba jelentkezés</a></td></tr>
+<tr><td><a href="../Users/wv_work_01/Desktop/test/Bejelentkezés majd kollégiumi jelentkezés visszavonása.html">Bejelentkezés majd kollégiumi jelentkezés visszavonása</a></td></tr>
+<tr><td><a href="../Users/wv_work_01/Desktop/test/Regisztráció jelentkezés és jelentkezés visszavonása.html">Regisztráció jelentkezés és jelentkezés visszavonása</a></td></tr>
+</tbody></table>
+</body>
+</html>
